@@ -1,0 +1,39 @@
+1 - Criar a pasta para o projeto.
+No nosso usaremos o nome de tarefas
+
+2 - Instalar o Django
+pip install django
+
+3 - Criar o projeto e o app
+django-admin startproject projeto / python -m django startproject projeto
+cd projeto
+django-admin startapp app
+
+4 - Em projeto -> settings.py
+Configurar os dados de acesso ao banco de dados na seção DATABASES
+Registrar o app na seção: INSTALLED_APPS
+
+5 - Em app -> models.py
+Definir o model, considerando que a tabela já existe no banco de dados
+
+6 - Em app -> views.py
+Criar a view para consultar a tabela tarefas e retornar os dados no template HTML
+
+7 - Em projeto -> urls.py
+Adicionar uma rota para o caminho raiz '' para a view criada acima
+
+8 - Em app
+Criar a pasta templates
+Criar a pasta html dentro de templates
+Criar o arquivo listar_tarefas.html dentro da pasta templates/html
+Criar o conteúdo do arquivo listar_tarefas.html com uma tabela com as seguintes colunas:
+- idTarefa
+- Título
+- Prazo
+- Responsável
+- Status
+
+9 - Executar o projeto
+python manage.py runserver
+
+10 - Na tabela, incluir uma coluna um link para editar
