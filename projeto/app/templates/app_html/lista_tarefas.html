@@ -33,8 +33,8 @@
                 <td>{{ tarefa.responsavel }}</td>
                 <td>{{ tarefa.status|yesno:"Ativo,Não Ativo" }}</td>
                 <td>
-                    <a href="#" class="me-3"><i class="bi bi-pencil-square"></i></a>
-                    <a href="#"><i class="bi bi-trash-fill text-danger"></i></a>
+                    <a href="{% url 'rotaEditarTarefa' tarefa.id_tarefa %}" class="me-3"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'rotaExcluirTarefa' tarefa.id_tarefa %}"><i class="bi bi-trash-fill text-danger"></i></a>
                 </td>
             </tr>
             {% endfor %}
