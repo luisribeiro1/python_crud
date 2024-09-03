@@ -7,4 +7,5 @@ urlpatterns = [
     path('nova/', criar_tarefa, name='rotaNovaTarefa'),
     path('editar/<int:id>/', editar_tarefa, name='rotaEditarTarefa'),
     path('excluir/<int:id>/', excluir_tarefa, name='rotaExcluirTarefa'),
+    path('usuarios/', listar_usuarios, name='rotaUsuarios'),
 ]
