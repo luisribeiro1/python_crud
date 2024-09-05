@@ -31,6 +31,15 @@
 
         <div class="mt-5 mb-4 d-flex justify-content-between">
             <h3>Lista de Tarefas</h3>
+
+            <form method="GET" action="{% url 'rotaTarefas' %}">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="q" placeholder="Buscar tarefas..."
+                        value="{{ query }}">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                </div>
+            </form>
+
             <a href="{% url 'rotaNovaTarefa' %}" class="btn btn-success">Nova Tarefa</a>
         </div>
 
