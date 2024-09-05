@@ -10,6 +10,21 @@
 
 <body>
 
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{% url 'rotaTarefas' %}">Tarefas</a>
+              <a class="nav-link" href="{% url 'rotaUsuarios' %}">Usuarios</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
     <div class="container">
 
         <div class="mt-5 mb-4 d-flex justify-content-between">
@@ -37,8 +52,8 @@
                     <td>{{ linha.responsavel }}</td>
                     <td>{{ linha.status|yesno:"Ativo,Não Ativo" }}</td>
                     <td>
-                        <a href="#" class="me-3"><i class="bi bi-pencil-square"></i></a>
-                        <a href="#"><i class="bi bi-trash-fill text-danger"></i></a>
+                        <a href="{% url 'rotaEditarTarefa' linha.id_tarefa %}" class="me-3"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{% url 'rotaExcluirTarefa' linha.id_tarefa %}"><i class="bi bi-trash-fill text-danger"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
