@@ -31,40 +31,28 @@
     <div class="container">
 
         <div class="mt-5 mb-4 d-flex justify-content-between">
-            <h3>Lista de Tarefas</h3>
-            <a href="{% url 'rotaNovaTarefa' %}" class="btn btn-success">Nova Tarefa</a>
-            <form method="GET" action="{% url 'rotaTarefas' %}">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="q" placeholder="Buscar tarefas..."
-                        value="{{ query }}">
-                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                </div>
-            </form>
+            <h3>Lista de Usuarios</h3>
+            <a href="{% url 'rotaNovoUsuario' %}" class="btn btn-success">Novo Usuario</a>
         </div>
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Título</th>
-                    <th>Prazo</th>
-                    <th>Responsável</th>
-                    <th>Status</th>
+                    <th>Nome</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                {% for linha in lista_tarefas %}
+                {% for linha in lista_usuarios  %}
                 <tr>
-                    <td>{{ linha.id_tarefa }}</td>
-                    <td>{{ linha.titulo }}</td>
-                    <td>{{ linha.prazo|date:"d/m/Y" }}</td>
-                    <td>{{ linha.responsavel }}</td>
-                    <td>{{ linha.status|yesno:"Ativo,Não Ativo" }}</td>
+                    <td>{{ linha.id_usuario }}</td>
+                    <td>{{ linha.nome }}</td>
+                    
                     <td>
-                        <a href="{% url 'rotaEditarTarefa' linha.id_tarefa %}" class="me-3"><i
+                        <a href="{% url 'rotaEditarUsuarios' linha.id_usuario %}" class="me-3"><i
                                 class="bi bi-pencil-square"></i></a>
-                        <a href="{% url 'rotaExcluirTarefa' linha.id_tarefa %}"><i
+                        <a href="{% url 'rotaExcluirUsuarios' linha.id_usuario %}"><i
                                 class="bi bi-trash-fill text-danger"></i></a>
                     </td>
                 </tr>
