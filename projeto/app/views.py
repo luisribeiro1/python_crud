@@ -3,7 +3,14 @@ from .models import Tarefa
 from .forms import TarefaForm
 
 def listar_tarefas(request):
-    tarefas = Tarefa.objects.all() .order_by('id_tarefa')
+    
+    #Recupera o termo usado no campo da busca
+    query = request.GET.get('q')
+    if query:
+        tarefas = Tarefa.objects.filter(titulo__icontains=query)
+    else:
+        tarefas = Tarefa.objects.all() .order_by('id_tarefa')
+
     return render(request, 'html/listar_tarefas.html', {'lista_tarefas': tarefas})
 
 def criar_tarefa(request):
