@@ -1,0 +1,193 @@
+Estruturas de dados
+
+Resolver problemas
+
+Pensamento computacional
+- Decomposição 
+- Reconhecimento de padrões
+- Abstração (POO)
+- Algoritmo
+
+MySQL 
+
+Front-end: HTML, CSS e Javascript
+Back-end: Python, C#, Java, etc
+Fullstack
+Django
+
+------------------------------------------
+
+Versionamento de código
+- git: ferramenta de versionamento
+- Github: repositório
+
+# inicializar o repositório local
+git init
+
+# seleciona todos os arquivos
+git add .
+# 
+git commit -m "22/07/2024 - Commit inicial do projeto"
+
+# Definir o repositório remoto
+git remote add origin https://github.com/luisribeiro1/python_crud
+
+# trocar de branch
+git branch -M main
+
+# criar branch
+git checkout -b seu_nome
+
+# enviar
+git push -u origin seu_nome
+
+====================
+FINAL DA AULA
+
+git add .
+git commit -m "data - conteudo das atividades"
+git push
+
+
+=============================
+
+Bancos relacionais
+- MySQL - MariaDB
+- PostgreSQL
+- SQLite
+- SQL Server (Microsoft)
+- Oracle (Oracle)
+
+SQL - Structure Query Language
+DDL
+- CREATE
+- ALTER
+- DROP
+
+DML
+- SELECT
+- INSERT
+- UPDATE
+- DELETE
+
+CRUD 
+
+Bancos NoSQL
+- MongoDB
+- 
+
+Entidade - Produto, Cliente, Compra, Categoria
+
+Entidade -> Tabela
+Atributo -> campo ou atributo
+
+Tarefas
+- idTarefa			int
+- titulo			string
+- descricao			string
+- prazo				data
+- status			boleano
+- idUsuarioFk (FK) foreign key	int
+
+Usuarios
+- idUsuario (PK) Primary Key	int
+- nome				string
+- email				string
+
+CREATE TABLE usuarios(
+	idUsuario SERIAL PRIMARY KEY,
+	nome varchar(100),
+	email varchar(100)
+);
+
+CREATE TABLE tarefas(
+	idTarefa SERIAL,
+	titulo varchar(200),
+	descricao text,
+	prazo date,
+	status boolean,
+	idUsuarioFk int,
+	CONSTRAINT idUsuario_fk FOREIGN KEY (idUsuarioFk)
+	REFERENCES usuarios(idUsuario)
+);
+
+CREATE TABLE estados(
+	uf varchar(2) PRIMARY KEY,
+	estado varchar(100),
+	pop2000 int,
+	homens int,
+	mulheres int,
+	urbana int,
+	rural int,
+	pop2010 int,
+	pop2021 int,
+	cidades int,
+	capital varchar(100),
+	gentilico varchar(100),
+	area decimal(10,2),
+	percentual_rural decimal(10,2),
+	percentual_urbana decimal(10,2),
+	percentual_2010_2021 decimal(10,2)
+);
+
+
+CREATE TABLE cidades(
+	codigo int PRIMARY KEY,
+	uf varchar(2),
+	cidade varchar(100),
+	pop2000 int,
+	homens int,
+	mulheres int,
+	urbana int,
+	rural int,
+	pop2010 int,
+	pop2021 int
+);
+
+
+INSERT INTO estados(uf,estado,pop2000,homens,mulheres,urbana,rural,pop2010,
+	pop2021,cidades,capital,gentilico,area,percentual_rural,
+	percentual_urbana,percentual_2010_2021)
+VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);
+
+
+
+
+SELECT * FROM cidades
+WHERE cidade LIKE '%Maria'
+ORDER BY uf, pop2021 desc;
+
+
+SELECT * FROM cidades
+WHERE uf='SP' and pop2021 BETWEEN 350000 and 500000
+ORDER BY uf, pop2021 desc;
+
+
+Django - framework para trabalhar com aplicações web
+Model - Dados (ORM)
+View - regra de negócio
+Template - apresentação HTML
+
+CRUD
+
+MVC
+
+https://getbootstrap.com
+
+
+
+REST
+- GET
+- POST
+- PUT
+- DELETE
+
+
+	
+
+
+
+
+
+
+
