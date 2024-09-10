@@ -1,0 +1,165 @@
+1 - Criar a pasta para o projeto.
+No nosso usaremos o nome de tarefas
+
+2 - Instalar o Django
+pip install django
+
+
+3 - Criar o projeto e o app
+django-admin startproject projeto (python -m django startproject projeto)
+cd projeto
+django-admin startapp app (python -m django startapp app)
+
+
+4 - Em projeto -> settings.py
+Configurar os dados de acesso ao banco de dados na seção DATABASES
+Registrar o app na seção: INSTALLED_APPS
+
+
+5 - Em app -> models.py
+Definir o model, considerando que a tabela já existe no banco de dados
+
+
+6 - Em app -> views.py
+Criar a view para consultar a tabela tarefas e retornar os dados no template HTML
+
+7 - Em projeto -> urls.py
+Adicionar uma rota para o caminho raiz '' para a view criada acima
+
+8 - Em app
+Criar a pasta templates
+Criar a pasta html dentro de templates
+Criar o arquivo listar_tarefas.html dentro da pasta templates/html
+Criar o conteúdo do arquivo listar_tarefas.html com uma tabela com as seguintes colunas:
+- idTarefa
+- Título
+- Prazo
+- Responsável
+- Status
+
+tarefa.status|yesno:"Ativo,Não Ativo"
+
+
+9 - Executar o projeto
+python manage.py runserver
+
+10 - Na tabela, incluir uma coluna no final da tabela com um link para editar
+
+
+
+
+
+
+CREATE TABLE tarefas(
+    id_tarefa SERIAL primary key,
+    titulo varchar(200),
+    prazo date,
+    responsavel varchar(100),
+    status boolean
+);
+
+INSERT INTO tarefas(titulo,prazo,responsavel,status) VALUES
+('Primeira tarefa','2024-08-19','Luis',true),
+('Segunda tarefa','2024-08-20','Luis',false),
+('Terceira tarefa','2024-08-21','Luis',false),
+('Quarta tarefa','2024-08-21','Luis',true),
+('Quinta tarefa','2024-08-21','Luis',false),
+('Sexta tarefa','2024-08-21','Luis',true),
+('Sétima tarefa','2024-08-21','Luis',true),
+('Oitava tarefa','2024-08-22','Luis',false),
+('Nova tarefa','2024-08-22','Luis',false),
+('Décima tarefa','2024-08-23','Luis',false);
+
+
+
+
+CREATE TABLE usuarios(
+    id_usuario SERIAL primary key,
+    nome varchar(100)
+);
+
+CREATE TABLE tarefas2(
+    id_tarefa SERIAL primary key,
+    titulo varchar(200),
+    prazo date,
+    responsavel int,
+    status boolean
+);
+
+INSERT INTO usuarios(nome) values
+('Luis'),
+('João'),
+('Maria'),
+('Pedro'),
+('Paulo');
+
+
+ROTEIRO PARA CRUD DE USUÁRIOS
+Listar:
+- dupicar listar_tarefas.html para listar_usuarios.html
+- incluir a rotaUsuarios para listar os usuários
+- criar a view listar_usuarios 
+
+Cadastrar e editar:
+- duplicar form_tarefa.html para form_usuario.html
+- incluir as rotas rotaNovoUsuario e rotaEditarUsuario
+- criar as views criar_usuario e editar_usuario
+- Em forms.py, criar a classe UsuarioForm
+
+Excluir:
+- duplicar excluir_tarefa.html para excluir_usuario.html
+- incluir a rotaExcluirUsuario
+- criar a view excluir_usuarios 
+
+
+
+            <form method="GET" action="{% url 'rotaTarefas' %}">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="q" placeholder="Buscar tarefas..."
+                        value="{{ query }}">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                </div>
+            </form>
+
+
+
+    #tarefas = Tarefa.objects.all().order_by('id_tarefa')
+
+    # Recupera o termo usado no campo da busca
+    query = request.GET.get('q')
+    if query:
+        tarefas = Tarefa.objects.filter(titulo__icontains=query)
+    else:
+        tarefas = Tarefa.objects.all().order_by('id_tarefa')
+
+
+
+=======================================
+
+Instalar:
+- Python (loja Windows)
+- DJango (pip install django)
+- Psycopg2 (pip install psycopg2)
+- REST Framework (pip install djangorestframework)
+
+REST 
+- GET
+- POST
+- PUT
+- DELETE
+
+
+serializers.py
+
+
+
+
+
+
+
+
+
+
+
+
+
